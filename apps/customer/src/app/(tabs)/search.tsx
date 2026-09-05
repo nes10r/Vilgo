@@ -25,13 +25,14 @@ export default function SearchScreen() {
 
   return (
     <Screen className="pt-4">
-      <View className="flex-row items-center gap-3 pb-4">
+      <View className="flex-row items-end gap-3 pb-4">
         <View className="flex-1">
           <TextField
             label="Axtarış"
             placeholder="Restoran və ya mətbəx axtar"
             value={query}
             onChangeText={setQuery}
+            returnKeyType="search"
           />
         </View>
         <Pressable

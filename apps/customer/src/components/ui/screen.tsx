@@ -6,7 +6,7 @@ export function Screen({ className, children, ...rest }: ViewProps) {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }} edges={['top', 'bottom']}>
       <KeyboardAvoidingView
         className="flex-1"
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View className={`flex-1 px-6 ${className ?? ''}`} {...rest}>
           {children}
         </View>
