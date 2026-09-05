@@ -1,0 +1,7 @@
+{
+  "name": "vilgo",
+  "private": true,
+  "scripts": {
+    "customer": "pnpm --filter customer"
+  }
+}
