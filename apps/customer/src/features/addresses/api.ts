@@ -6,7 +6,8 @@ export async function fetchDefaultAddress(userId: string): Promise<Address | nul
     .from('addresses')
     .select('*')
     .eq('user_id', userId)
-    .order('created_at', { ascending: true })
+    .order('is_default', { ascending: false })
+    .order('created_at', { ascending: false })
     .limit(1)
     .maybeSingle();
 

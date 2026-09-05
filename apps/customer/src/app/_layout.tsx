@@ -1,7 +1,8 @@
 import '@/global.css';
 
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { Slot } from 'expo-router';
+import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -32,9 +33,11 @@ export default function RootLayout() {
       <SafeAreaProvider>
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
-            <SplashGate>
-              <Slot />
-            </SplashGate>
+            <BottomSheetModalProvider>
+              <SplashGate>
+                <Stack screenOptions={{ headerShown: false }} />
+              </SplashGate>
+            </BottomSheetModalProvider>
           </AuthProvider>
         </QueryClientProvider>
       </SafeAreaProvider>
