@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/build/Ionicons';
 import { Pressable, Text, View } from 'react-native';
 
 import { formatMoney } from '@/lib/format';
