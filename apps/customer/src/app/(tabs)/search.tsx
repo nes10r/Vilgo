@@ -1,7 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import type { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { router } from 'expo-router';
 import { useRef, useState } from 'react';
-import { Alert, Pressable, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 import { FilterSheet } from '@/components/restaurants/filter-sheet';
 import { RestaurantList } from '@/components/restaurants/restaurant-list';
@@ -12,7 +13,7 @@ import { useRestaurantSearch } from '@/features/restaurants/use-restaurant-searc
 import type { RestaurantWithDistance } from '@/types/supabase';
 
 function handlePressRestaurant(restaurant: RestaurantWithDistance) {
-  Alert.alert(restaurant.name, 'Restoran səhifəsi tezliklə əlavə olunacaq.');
+  router.push(`/restaurant/${restaurant.id}`);
 }
 
 export default function SearchScreen() {

@@ -1,6 +1,12 @@
 import { supabase } from '@/lib/supabase';
-import type { RestaurantWithDistance } from '@/types/supabase';
+import type { Restaurant, RestaurantWithDistance } from '@/types/supabase';
 import type { RestaurantFilters } from '@/features/restaurants/types';
+
+export async function fetchRestaurantById(id: string): Promise<Restaurant> {
+  const { data, error } = await supabase.from('restaurants').select('*').eq('id', id).single();
+  if (error) throw error;
+  return data;
+}
 
 async function callNearbyRestaurantsRpc(args: {
   user_lat: number;

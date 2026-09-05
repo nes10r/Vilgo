@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useMemo } from 'react';
-import { Alert, Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { RestaurantCard } from '@/components/restaurants/restaurant-card';
 import { CategoryChipRow } from '@/components/restaurants/category-chip-row';
@@ -12,7 +12,7 @@ import { useNearbyRestaurants } from '@/features/restaurants/use-nearby-restaura
 import type { RestaurantWithDistance } from '@/types/supabase';
 
 function handlePressRestaurant(restaurant: RestaurantWithDistance) {
-  Alert.alert(restaurant.name, 'Restoran səhifəsi tezliklə əlavə olunacaq.');
+  router.push(`/restaurant/${restaurant.id}`);
 }
 
 export default function HomeScreen() {

@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { router, useLocalSearchParams } from 'expo-router';
-import { Alert, Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
 import { RestaurantList } from '@/components/restaurants/restaurant-list';
 import { Screen } from '@/components/ui/screen';
@@ -9,7 +9,7 @@ import { useRestaurantsByCategory } from '@/features/restaurants/use-restaurants
 import type { RestaurantWithDistance } from '@/types/supabase';
 
 function handlePressRestaurant(restaurant: RestaurantWithDistance) {
-  Alert.alert(restaurant.name, 'Restoran səhifəsi tezliklə əlavə olunacaq.');
+  router.push(`/restaurant/${restaurant.id}`);
 }
 
 export default function CategoryScreen() {

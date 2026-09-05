@@ -35,7 +35,12 @@ export default function RootLayout() {
           <AuthProvider>
             <BottomSheetModalProvider>
               <SplashGate>
-                <Stack screenOptions={{ headerShown: false }} />
+                <Stack screenOptions={{ headerShown: false }}>
+                  <Stack.Screen
+                    name="restaurant/[id]/item/[itemId]"
+                    options={{ presentation: 'modal' }}
+                  />
+                </Stack>
               </SplashGate>
             </BottomSheetModalProvider>
           </AuthProvider>

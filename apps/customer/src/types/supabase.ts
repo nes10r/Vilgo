@@ -69,6 +69,82 @@ export type Database = {
         Update: Partial<Database['public']['Tables']['restaurants']['Row']>;
         Relationships: [];
       };
+      menu_categories: {
+        Row: {
+          id: string;
+          restaurant_id: string;
+          name: string;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: Omit<Database['public']['Tables']['menu_categories']['Row'], 'id' | 'created_at'> & {
+          id?: string;
+          created_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['menu_categories']['Row']>;
+        Relationships: [];
+      };
+      menu_items: {
+        Row: {
+          id: string;
+          restaurant_id: string;
+          category_id: string;
+          name: string;
+          description: string | null;
+          price_cents: number;
+          image_url: string | null;
+          is_available: boolean;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: Omit<Database['public']['Tables']['menu_items']['Row'], 'id' | 'created_at'> & {
+          id?: string;
+          created_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['menu_items']['Row']>;
+        Relationships: [];
+      };
+      item_option_groups: {
+        Row: {
+          id: string;
+          restaurant_id: string;
+          menu_item_id: string;
+          name: string;
+          selection_type: 'single' | 'multiple';
+          is_required: boolean;
+          min_select: number;
+          max_select: number;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: Omit<
+          Database['public']['Tables']['item_option_groups']['Row'],
+          'id' | 'created_at'
+        > & {
+          id?: string;
+          created_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['item_option_groups']['Row']>;
+        Relationships: [];
+      };
+      item_options: {
+        Row: {
+          id: string;
+          restaurant_id: string;
+          option_group_id: string;
+          name: string;
+          price_delta_cents: number;
+          is_default: boolean;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: Omit<Database['public']['Tables']['item_options']['Row'], 'id' | 'created_at'> & {
+          id?: string;
+          created_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['item_options']['Row']>;
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -99,3 +175,7 @@ export type Address = Database['public']['Tables']['addresses']['Row'];
 export type Profile = Database['public']['Tables']['profiles']['Row'];
 export type Restaurant = Database['public']['Tables']['restaurants']['Row'];
 export type RestaurantWithDistance = Restaurant & { distance_meters: number };
+export type MenuCategory = Database['public']['Tables']['menu_categories']['Row'];
+export type MenuItem = Database['public']['Tables']['menu_items']['Row'];
+export type ItemOptionGroup = Database['public']['Tables']['item_option_groups']['Row'];
+export type ItemOption = Database['public']['Tables']['item_options']['Row'];
